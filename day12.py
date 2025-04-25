@@ -15,12 +15,20 @@ def onOpen():
         veggieRows = []
         for row in veggies:
             veggieRow = list(veggie for veggie in row)
-            veggieRow.append(1)
-            veggieRow.insert(0,1)
+            #veggieRow.append(1)
+            #veggieRow.insert(0,1)
             veggieRows.append(veggieRow)
         #veggieRows = veggieSpacer(veggieRows)
+        plot_dict = dict()
+        for i in range(len(veggieRows)):
+            for j in range(len(veggieRows[i])):
+                if veggieRows[i][j] not in plot_dict.keys():
+                    plot_dict.update({veggieRows[i][j] : [(i,j)]})
+                else:
+                    plot_dict[veggieRows[i][j]].append((i,j))
         for row in veggieRows:
             print(row)
+        print(plot_dict)
 
 
 import datetime
